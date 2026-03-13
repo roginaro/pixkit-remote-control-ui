@@ -1,0 +1,18 @@
+.mode-container {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.mode-label {
+  font-weight: bold;
+}
+
+.mode-select {
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 1px solid #aaa;
+  background: #ffffff;
+  cursor: pointer;
+}

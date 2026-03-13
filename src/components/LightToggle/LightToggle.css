@@ -1,0 +1,21 @@
+.light-container {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.light-label {
+  font-weight: bold;
+}
+
+.light-checkbox {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.light-status {
+  font-weight: bold;
+  color: #444;
+}
