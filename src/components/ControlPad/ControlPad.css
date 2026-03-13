@@ -1,0 +1,43 @@
+.controlpad-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  margin: 20px 0;
+}
+
+.middle-row {
+  display: flex;
+  gap: 12px;
+}
+
+.control-btn {
+  width: 60px;
+  height: 60px;
+  font-size: 22px;
+  font-weight: bold;
+  border: none;
+  border-radius: 10px;
+  background: #2c2c2c;
+  color: #ffffff;
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+}
+
+.control-btn:hover {
+  background: #444444;
+  transform: scale(1.05);
+}
+
+.control-btn:active {
+  transform: scale(0.95);
+}
+
+.control-btn.stop {
+  background: #aa0000;
+}
+
+.control-btn.stop:hover {
+  background: #cc3333;
+}
+``
