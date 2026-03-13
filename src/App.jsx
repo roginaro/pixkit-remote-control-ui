@@ -20,40 +20,49 @@ export default function App() {
   }
 
   return (
-    <div className="app-container">
-      <h2>Pixkit Remote Control Interface (Prototype)</h2>
+    <div className="layout-container">
+      {/* COLUNA ESQUERDA */}
+      <div className="left-panel">
+        <h2>Pixkit Remote Control Interface (Prototype)</h2>
 
-      <StatusIndicator connected={connected} />
+        <StatusIndicator connected={connected} />
 
-      <LightToggle
-        value={lights}
-        onChange={(l) => {
-          setLights(l);
-          const entry = `${new Date().toLocaleTimeString()} → Lights turned ${l ? "ON" : "OFF"}`;
-          setLog((prev) => [entry, ...prev]);
-        }}
-      />
+        <div className="top-row">
+          <ModeSelector
+            value={mode}
+            onChange={(m) => {
+              setMode(m);
+              const entry = `${new Date().toLocaleTimeString()} → Mode changed to ${m}`;
+              setLog((prev) => [entry, ...prev]);
+            }}
+          />
 
-      <ModeSelector
-        value={mode}
-        onChange={(m) => {
-          setMode(m);
-          const entry = `${new Date().toLocaleTimeString()} → Mode changed to ${m}`;
-          setLog((prev) => [entry, ...prev]);
-        }}
-      />
+          <LightToggle
+            value={lights}
+            onChange={(l) => {
+              setLights(l);
+              const entry = `${new Date().toLocaleTimeString()} → Lights turned ${l ? "ON" : "OFF"}`;
+              setLog((prev) => [entry, ...prev]);
+            }}
+          />
+        </div>
 
-      <ControlPad onCommand={handleCommand} />
+        <ControlPad onCommand={handleCommand} />
 
-      <SpeedSlider
-        value={speed}
-        onChange={(s) => {
-          setSpeed(s);
-          const entry = `${new Date().toLocaleTimeString()} → Speed set to ${s}`;
-          setLog((prev) => [entry, ...prev]);
-        }}
-      />
-      <CommandLog entries={log} />
+        <SpeedSlider
+          value={speed}
+          onChange={(s) => {
+            setSpeed(s);
+            const entry = `${new Date().toLocaleTimeString()} → Speed set to ${s}`;
+            setLog((prev) => [entry, ...prev]);
+          }}
+        />
+      </div>
+
+      {/* COLUNA DIREITA */}
+      <div className="right-panel">
+        <CommandLog entries={log} />
+      </div>
     </div>
   );
 }

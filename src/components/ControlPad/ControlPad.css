@@ -2,13 +2,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 12px;
-  margin: 20px 0;
-}
-
-.middle-row {
-  display: flex;
-  gap: 12px;
+  gap: 14px;
 }
 
 .control-btn {
@@ -16,17 +10,17 @@
   height: 60px;
   font-size: 22px;
   font-weight: bold;
-  border: none;
   border-radius: 10px;
-  background: #2c2c2c;
-  color: #ffffff;
+  border: 1px solid var(--border-color);
+  background: #2a2a2a;
+  color: var(--text-color);
   cursor: pointer;
-  transition: 0.2s ease-in-out;
+  transition: 0.2s ease;
 }
 
 .control-btn:hover {
-  background: #444444;
-  transform: scale(1.05);
+  background: #3a3a3a;
+  border-color: var(--accent);
 }
 
 .control-btn:active {
@@ -34,10 +28,13 @@
 }
 
 .control-btn.stop {
-  background: #aa0000;
+  background: var(--danger);
+  border-color: var(--danger);
 }
 
-.control-btn.stop:hover {
-  background: #cc3333;
+.middle-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px; /* AQUI ESTÁ O ESPAÇAMENTO ENTRE LEFT / STOP / RIGHT */
 }
-``

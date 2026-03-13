@@ -1,11 +1,76 @@
-.app-container {
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 20px;
-  text-align: center;
-  font-family: Arial, sans-serif;
+/* ======== GLOBAL DARK THEME ======== */
+:root {
+  --bg-color: #121212;
+  --panel-color: #1e1e1e;
+  --accent: #00b3ff;
+  --text-color: #e6e6e6;
+  --border-color: #333;
+  --danger: #cc3333;
+  --success: #27c46b;
+  --muted: #999;
 }
 
-h1 {
-  margin-bottom: 30px;
+body {
+  background: var(--bg-color);
+  color: var(--text-color);
+  font-family: "Segoe UI", Arial, sans-serif;
+  margin: 0;
+}
+
+/* ======== MAIN CONTAINER ======== */
+.app-container {
+  max-width: 520px;
+  margin: 40px auto;
+  padding: 20px;
+  background: var(--panel-color);
+  border-radius: 12px;
+  box-shadow: 0px 0px 18px rgba(0, 0, 0, 0.45);
+  text-align: center;
+}
+
+/* ======== TOP ROW (Mode + Lights) ======== */
+.top-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  margin: 20px 0;
+}
+
+/* Fix default select + input styles for dark theme */
+select,
+input[type="checkbox"],
+input[type="range"] {
+  accent-color: var(--accent);
+}
+h1,
+h2,
+h3 {
+  color: var(--text-color); /* deixa os títulos na cor clara do tema */
+}
+
+h2 {
+  margin-bottom: 20px;
+  font-size: 22px;
+  color: var(--accent); /* azul neon do dashboard */
+  font-weight: bold;
+  text-shadow: 0 0 5px rgba(0, 179, 255, 0.5);
+}
+
+/* Container principal em duas colunas */
+.layout-container {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+}
+
+/* Painel esquerdo (controles) */
+.left-panel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Painel direito (log) */
+.right-panel {
+  width: 320px; /* Tamanho fixo da área de log */
 }
