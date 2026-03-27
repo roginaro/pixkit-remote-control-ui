@@ -1,76 +1,244 @@
-/* ======== GLOBAL DARK THEME ======== */
+/* src/App.css - Dark Theme */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 :root {
-  --bg-color: #121212;
-  --panel-color: #1e1e1e;
-  --accent: #00b3ff;
-  --text-color: #e6e6e6;
-  --border-color: #333;
-  --danger: #cc3333;
-  --success: #27c46b;
-  --muted: #999;
+  /* Dark Theme Colors */
+  --bg-primary: #0f0f23;
+  --bg-secondary: #1a1a2e;
+  --bg-tertiary: #16213e;
+  --bg-card: #1e1e2f;
+
+  --text-primary: #e4e4e7;
+  --text-secondary: #a1a1aa;
+  --text-muted: #71717a;
+
+  --accent-primary: #8b5cf6;
+  --accent-secondary: #a78bfa;
+  --accent-gradient: linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%);
+
+  --success: #10b981;
+  --danger: #ef4444;
+  --warning: #f59e0b;
+
+  --border-color: #27272a;
+  --shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 10px 40px rgba(0, 0, 0, 0.6);
 }
 
 body {
-  background: var(--bg-color);
-  color: var(--text-color);
-  font-family: "Segoe UI", Arial, sans-serif;
-  margin: 0;
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", sans-serif;
+  background: var(--bg-primary);
+  color: var(--text-primary);
 }
 
-/* ======== MAIN CONTAINER ======== */
 .app-container {
-  max-width: 520px;
-  margin: 40px auto;
-  padding: 20px;
-  background: var(--panel-color);
-  border-radius: 12px;
-  box-shadow: 0px 0px 18px rgba(0, 0, 0, 0.45);
-  text-align: center;
-}
-
-/* ======== TOP ROW (Mode + Lights) ======== */
-.top-row {
-  display: flex;
-  justify-content: space-between;
-  gap: 20px;
-  margin: 20px 0;
-}
-
-/* Fix default select + input styles for dark theme */
-select,
-input[type="checkbox"],
-input[type="range"] {
-  accent-color: var(--accent);
-}
-h1,
-h2,
-h3 {
-  color: var(--text-color); /* deixa os títulos na cor clara do tema */
-}
-
-h2 {
-  margin-bottom: 20px;
-  font-size: 22px;
-  color: var(--accent); /* azul neon do dashboard */
-  font-weight: bold;
-  text-shadow: 0 0 5px rgba(0, 179, 255, 0.5);
-}
-
-/* Container principal em duas colunas */
-.layout-container {
-  display: flex;
-  gap: 20px;
-  padding: 20px;
-}
-
-/* Painel esquerdo (controles) */
-.left-panel {
-  flex: 1;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
 
-/* Painel direito (log) */
-.right-panel {
-  width: 320px; /* Tamanho fixo da área de log */
+/* ========================================
+   STATUS & INDICATORS ZONE (Topo)
+======================================== */
+.status-indicators-zone {
+  background: var(--accent-gradient);
+  color: white;
+  padding: 24px 40px;
+  box-shadow: var(--shadow);
+  border-bottom: 1px solid rgba(139, 92, 246, 0.3);
+}
+
+.status-indicators-zone .zone-header {
+  margin-bottom: 16px;
+}
+
+.status-indicators-zone h2 {
+  font-size: 20px;
+  font-weight: 600;
+  opacity: 0.95;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.status-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  align-items: center;
+}
+
+.status-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.status-label {
+  font-size: 12px;
+  opacity: 0.8;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.status-value {
+  font-size: 18px;
+  font-weight: 700;
+  padding: 6px 12px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 6px;
+  display: inline-block;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* ========================================
+   MAIN CONTENT (Control + Log)
+======================================== */
+.main-content {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 400px 1fr;
+  gap: 24px;
+  padding: 24px;
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* ========================================
+   CONTROL ZONE (Esquerda)
+======================================== */
+.control-zone {
+  background: var(--bg-card);
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  height: fit-content;
+}
+
+.zone-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 16px;
+  border-bottom: 2px solid var(--border-color);
+}
+
+.zone-header h2 {
+  font-size: 24px;
+  color: var(--text-primary);
+  font-weight: 700;
+}
+
+.zone-badge {
+  background: var(--accent-primary);
+  color: white;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  box-shadow: 0 2px 8px rgba(139, 92, 246, 0.3);
+}
+
+.control-section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.control-section h3 {
+  font-size: 16px;
+  color: var(--text-secondary);
+  font-weight: 600;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* ========================================
+   COMMAND LOG ZONE (Direita)
+======================================== */
+.command-log-zone {
+  background: var(--bg-card);
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  max-height: calc(100vh - 200px);
+}
+
+.log-count {
+  background: var(--bg-tertiary);
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  border: 1px solid var(--border-color);
+}
+
+/* ========================================
+   RESPONSIVE
+======================================== */
+@media (max-width: 1024px) {
+  .main-content {
+    grid-template-columns: 1fr;
+  }
+
+  .status-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .status-indicators-zone {
+    padding: 16px 20px;
+  }
+
+  .status-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .main-content {
+    padding: 16px;
+    gap: 16px;
+  }
+
+  .control-zone,
+  .command-log-zone {
+    padding: 16px;
+  }
+}
+
+/* ========================================
+   SCROLLBAR DARK THEME
+======================================== */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--accent-primary);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-secondary);
 }

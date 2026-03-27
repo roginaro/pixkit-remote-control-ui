@@ -1,34 +1,70 @@
+/* src/components/CommandLog/CommandLog.css */
 .commandlog-container {
-  margin-top: 25px;
-  width: 100%;
-  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  height: 100%;
 }
 
 .commandlog-title {
-  font-weight: bold;
-  margin-bottom: 8px;
+  font-size: 18px;
+  font-weight: 700;
+  color: #e4e4e7;
 }
 
 .commandlog-box {
-  background: #1a1a1a;
-  border: 1px solid var(--border-color);
-  padding: 10px;
-  height: 450px;
+  flex: 1;
   overflow-y: auto;
-  border-radius: 6px;
-}
-
-.commandlog-entry {
-  padding: 4px 0;
-  border-bottom: 1px solid #333;
-  color: var(--text-color);
-}
-
-.commandlog-entry:last-child {
-  border-bottom: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 16px;
+  background: rgba(139, 92, 246, 0.03);
+  border-radius: 8px;
+  border: 1px solid rgba(139, 92, 246, 0.1);
 }
 
 .commandlog-empty {
+  text-align: center;
+  padding: 40px;
+  color: #71717a;
   font-style: italic;
-  color: var(--muted);
+}
+
+.commandlog-entry {
+  padding: 12px 16px;
+  background: #1e1e2f;
+  border-left: 3px solid #8b5cf6;
+  border-radius: 6px;
+  font-family: "Courier New", monospace;
+  font-size: 13px;
+  color: #a1a1aa;
+  transition: all 0.2s ease;
+  border: 1px solid rgba(139, 92, 246, 0.2);
+}
+
+.commandlog-entry:hover {
+  background: #2a2a3e;
+  border-left-color: #a78bfa;
+  transform: translateX(4px);
+  box-shadow: 0 2px 8px rgba(139, 92, 246, 0.2);
+}
+
+/* Scrollbar para o log */
+.commandlog-box::-webkit-scrollbar {
+  width: 6px;
+}
+
+.commandlog-box::-webkit-scrollbar-track {
+  background: #1a1a2e;
+  border-radius: 3px;
+}
+
+.commandlog-box::-webkit-scrollbar-thumb {
+  background: #8b5cf6;
+  border-radius: 3px;
+}
+
+.commandlog-box::-webkit-scrollbar-thumb:hover {
+  background: #a78bfa;
 }

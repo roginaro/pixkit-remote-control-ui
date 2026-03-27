@@ -1,19 +1,31 @@
+/* src/components/LightToggle/LightToggle.css */
 .light-container {
   display: flex;
-  flex-direction: column;
-  text-align: left;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  background: rgba(139, 92, 246, 0.05);
+  border-radius: 8px;
+  border: 1px solid rgba(139, 92, 246, 0.2);
 }
 
 .light-label {
-  font-weight: bold;
+  font-size: 14px;
+  font-weight: 600;
+  color: #e4e4e7;
+  flex: 1;
 }
 
 .light-checkbox {
+  width: 20px;
+  height: 20px;
   cursor: pointer;
+  accent-color: #8b5cf6;
 }
 
 .light-status {
-  font-weight: bold;
-  margin-top: 4px;
-  color: var(--accent);
+  font-size: 14px;
+  font-weight: 700;
+  color: #a78bfa;
+  min-width: 40px;
 }
