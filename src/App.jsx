@@ -8,34 +8,28 @@ import CommandLog from "./components/CommandLog/CommandLog";
 import "./App.css";
 
 function App() {
-  // Estados do sistema
   const [connected, setConnected] = useState(false);
   const [mode, setMode] = useState("manual");
   const [speed, setSpeed] = useState(50);
   const [lightsOn, setLightsOn] = useState(false);
   const [commandLog, setCommandLog] = useState([]);
 
-  // Handler de comandos
   const handleCommand = (command) => {
     const timestamp = new Date().toLocaleTimeString();
-    const logEntry = `[${timestamp}] ${command} (Speed: ${speed}, Mode: ${mode})`;
-
-    setCommandLog((prev) => [logEntry, ...prev].slice(0, 50)); // Limita a 50 entradas
+    const logEntry = `[${timestamp}] ${command}`;
+    setCommandLog((prev) => [logEntry, ...prev].slice(0, 50));
   };
 
-  // Handler de mudança de modo
   const handleModeChange = (newMode) => {
     setMode(newMode);
     handleCommand(`MODE_CHANGED: ${newMode.toUpperCase()}`);
   };
 
-  // Handler de mudança de velocidade
   const handleSpeedChange = (newSpeed) => {
     setSpeed(newSpeed);
     handleCommand(`SPEED_CHANGED: ${newSpeed}`);
   };
 
-  // Handler de toggle de luzes
   const handleLightToggle = (isOn) => {
     setLightsOn(isOn);
     handleCommand(`LIGHTS_${isOn ? "ON" : "OFF"}`);
@@ -44,14 +38,17 @@ function App() {
   return (
     <div className="app-container">
       {/* ========================================
-          STATUS & INDICATORS ZONE (Topo)
-          Informações contextuais do sistema
+          APP HEADER - Título Principal
+      ======================================== */}
+      <header className="app-header">
+        <h1 className="app-title">Pixkit Vehicle</h1>
+        <p className="app-subtitle">Remote Control Interface</p>
+      </header>
+
+      {/* ========================================
+          STATUS & INDICATORS ZONE
       ======================================== */}
       <div className="status-indicators-zone">
-        <div className="zone-header">
-          <h2>System Status</h2>
-        </div>
-
         <div className="status-grid">
           <StatusIndicator connected={connected} />
 
@@ -73,10 +70,7 @@ function App() {
       </div>
 
       <div className="main-content">
-        {/* ========================================
-            CONTROL ZONE (Esquerda)
-            Elementos de interação/comandos
-        ======================================== */}
+        {/* CONTROL ZONE */}
         <div className="control-zone">
           <div className="zone-header">
             <h2>Control Panel</h2>
@@ -96,10 +90,7 @@ function App() {
           </div>
         </div>
 
-        {/* ========================================
-            COMMAND LOG ZONE (Direita)
-            Histórico de ações executadas
-        ======================================== */}
+        {/* COMMAND LOG ZONE */}
         <div className="command-log-zone">
           <div className="zone-header">
             <h2>Activity Log</h2>
